@@ -42,7 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 System.out.println("User с именем " + name + " добавлен в базу данных");
             }
         } catch (SQLException e) {
-            System.out.println("Не удалось создать пользователя" + name);
+            e.printStackTrace();
         }
     }
 
@@ -54,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -81,7 +81,7 @@ public class UserDaoJDBCImpl implements UserDao {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return users;
     }
@@ -96,7 +96,7 @@ public class UserDaoJDBCImpl implements UserDao {
              var statement = connection.createStatement()) {
             statement.executeUpdate(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

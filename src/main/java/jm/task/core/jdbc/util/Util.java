@@ -20,22 +20,17 @@ public final class Util {
     private Util() {
     }
 
-    public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection( PROPERTIES.getProperty(URL_KEY),
-                                                PROPERTIES.getProperty(USERNAME_KEY),
-                                                PROPERTIES.getProperty(PASSWORD_KEY));
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection( PROPERTIES.getProperty(URL_KEY),
+                                            PROPERTIES.getProperty(USERNAME_KEY),
+                                            PROPERTIES.getProperty(PASSWORD_KEY));
     }
 
     public static void loadProperties() {
         try (InputStream inputStream = Util.class.getClassLoader().getResourceAsStream("application.properties")) {
             PROPERTIES.load(inputStream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
