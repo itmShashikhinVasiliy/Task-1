@@ -42,7 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 System.out.println("User с именем " + name + " добавлен в базу данных");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Не удалось создать пользователя" + name);
         }
     }
 

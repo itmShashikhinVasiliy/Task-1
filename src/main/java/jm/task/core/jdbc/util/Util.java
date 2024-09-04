@@ -26,7 +26,8 @@ public final class Util {
                                                 PROPERTIES.getProperty(USERNAME_KEY),
                                                 PROPERTIES.getProperty(PASSWORD_KEY));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
